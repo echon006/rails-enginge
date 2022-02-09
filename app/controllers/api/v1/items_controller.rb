@@ -9,9 +9,22 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-  # render json: ItemSerializer.new(Item.create(name: params[:item][:name], description: params[:item][:description], unit_price: params[:item][:unit_price], merchant_id: params[:item][:merchant_id]))
-    render json: ItemSerializer.new(Item.create(item_params))
+    render json: ItemSerializer.new(Item.create(item_params)), status: :created
+  end
 
+  def destroy
+    render json: Item.delete(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    updated_item = Item.update(params[:id], item_params)
+
+    if updated_item.save
+      render json: ItemSerializer.new(updated_item)
+    else
+      render status: 404
+    end
   end
 
   private
