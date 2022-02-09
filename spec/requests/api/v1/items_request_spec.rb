@@ -101,6 +101,6 @@ RSpec.describe "Items API" do
     expect(response).to be_successful
     expect(updated_item.name).to_not eq(previous_name)
     expect(updated_item.name).to eq("Updated name")
-
   end
+
 end

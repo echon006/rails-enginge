@@ -2,16 +2,14 @@ class Api::V1::SearchesController < ApplicationController
 
   def show
     keyword = params[:name]
-    # if keyword.present?
     merchant_found = Merchant.search(keyword)
     if merchant_found.present?
       render json: MerchantSerializer.new(merchant_found.first)
     else
-      render json: MerchantSerializer.new(merchant_found)
+      render json: MerchantSerializer.new(Merchant.create())
     end
 
   end
-
 
   def index
     keyword = params[:name]

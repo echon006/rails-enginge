@@ -20,17 +20,16 @@ RSpec.describe "Search API" do
 
     expect(merchant[:data][:attributes]).to have_key(:name)
     expect(merchant[:data][:attributes][:name]).to be_a(String)
+
   end
 
-  it "returns error null if no match" do
+  it "returns nill object if no match" do
     create_list(:merchant, 3)
 
     get '/api/v1/merchants/find?name=NOMATCH'
-
     merchant = JSON.parse(response.body, symbolize_names: true)
-    # expect(response).not_to be_successful
-    expect(merchant[:data]).to eq([])
-
+    
+    expect(merchant[:data]).to eq({:attributes=>{:name=>nil}, :id=>"20", :type=>"merchant"})
   end
 
   it "returns all items of Search#index, item with keyword" do
