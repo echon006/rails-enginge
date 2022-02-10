@@ -69,24 +69,43 @@ $ bundle install
 Before using the web application you will need to setup your databases locally by running the following command
 
 ```shell
-$ rails db: {:drop, :create, :migrate, :seed}
+$ rake db:{drop,create,migrate,seed}
 ```
+then
+```shell
+$ rails db:schema:dump
+```
+- You can do the following to check to see if you have set up rails to effectively communicate with the database.
+Add a customer.rb file to your models directory
+- Create a Customer class that inherits from ApplicationRecord
+- run rails c to jump into your rails console.
+- run Customer.first to see the object: #<Customer id: 1, first_name: "Joey", last_name: "Ondricka", created_at: "2012-03-27 14:54:09", updated_at: "2012-03-27 14:54:09">
+- run Customer.last to see the object: #<Customer id: 1000, first_name: "Shawn", last_name: "Langworth", created_at: "2012-03-27 14:58:15", updated_at: "2012-03-27 14:58:15">
+- If this all checks out you should be good to go.
 
 
-* Ruby version
+## Endpoints
+Endpoints available for this API.
 
-* System dependencies
+1. Merchants
+To retrieve all Merchants
+http://localhost:3000/api/v1/merchants
+To retrieve one Merchant
+http://localhost:3000/api/v1/merchants/{{merchant_id}}
+To retrieve a Merchant's Items
+http://localhost:3000/api/v1/merchants/{{merchant_id}}/items
+To retrieve a Merchant based on a search(by name)
+http://localhost:3000/api/v1/merchants/find?name={{keyword}}
 
-* Configuration
 
-* Database creation
+2. Items
+To retrieve all Items
+http://localhost:3000/api/v1/items
+To retrieve one Item
+http://localhost:3000/api/v1/items/{{item_id}}
+To retrieve an Item's Merchant
+http://localhost:3000/api/v1/items/{{item_id}}/merchant
+To retrieve all items based on a search(by name)
+http://localhost:3000/api/v1/items/find_all?name={{keyword}}
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Create and update function also available for Items
