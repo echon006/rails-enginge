@@ -9,7 +9,7 @@
 ## Learning Goals
 - Strictly BE, setting up for FE to consume the API.
 - Utilize advanced routing techniques including namespacing to organize and group like functionality together.
-- Utilizes Postman test suits
+- Utilizes Postman test suites
 - Using Serializers to format JSON responses
 
 ## Requirements and Setup (for Mac):
