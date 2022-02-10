@@ -94,13 +94,26 @@ RSpec.describe "Items API" do
 
     headers = {"CONTENT_TYPE" => "application/json"}
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     patch "/api/v1/items/#{item_1.id}", headers: headers, params: JSON.generate({item: item_params})
     updated_item = Item.find_by(id: item_1.id)
 
     expect(response).to be_successful
     expect(updated_item.name).to_not eq(previous_name)
     expect(updated_item.name).to eq("Updated name")
+  end
+
+  it "can not update an existing item#update" do
+    merchant = create(:merchant)
+    item_1 = create(:item, merchant_id: merchant.id)
+
+    item_params = { name: "Updated name", merchant_id: 9999999 }
+
+    headers = {"CONTENT_TYPE" => "application/json"}
+  
+    patch "/api/v1/items/#{item_1.id}", headers: headers, params: JSON.generate({item: item_params})
+    updated_item = Item.find_by(id: item_1.id)
+
+    expect(response.status).to eq(404)
   end
 
 end

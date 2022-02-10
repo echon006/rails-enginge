@@ -23,13 +23,14 @@ RSpec.describe "Search API" do
 
   end
 
-  it "returns nill object if no match" do
+  it "returns empty object if no match" do
     create_list(:merchant, 3)
 
     get '/api/v1/merchants/find?name=NOMATCH'
     merchant = JSON.parse(response.body, symbolize_names: true)
     
-    expect(merchant[:data]).to eq({:attributes=>{:name=>nil}, :id=>"20", :type=>"merchant"})
+    merchant_id = merchant[:data][:id]
+    expect(merchant[:data]).to eq({:attributes=>{:name=>nil}, :id=>merchant_id, :type=>"merchant"})
   end
 
   it "returns all items of Search#index, item with keyword" do

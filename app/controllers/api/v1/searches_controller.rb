@@ -8,7 +8,6 @@ class Api::V1::SearchesController < ApplicationController
     else
       render json: MerchantSerializer.new(Merchant.create())
     end
-
   end
 
   def index
