@@ -34,12 +34,12 @@ On your local machine open a terminal session and enter the following commands f
 
 - using ssh key <br>
 ```shell
-$ git clone git@github.com:tjroeder/little-esty-shop.git
+$ git clone git@github.com:echon006/rails-enginge.git
 ```
 
 - using https <br>
 ```shell
-$ git clone https://github.com/tjroeder/little-esty-shop.git
+$ git clone https://github.com/echon006/rails-enginge.git
 ```
 
 Once cloned, you'll have a new local copy in the directory you ran the clone command in.
