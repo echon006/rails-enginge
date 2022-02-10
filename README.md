@@ -88,24 +88,24 @@ Add a customer.rb file to your models directory
 Endpoints available for this API.
 
 1. Merchants
-- To retrieve all Merchants
+- To retrieve all Merchants<br>
 http://localhost:3000/api/v1/merchants
-- To retrieve one Merchant
+- To retrieve one Merchant<br>
 http://localhost:3000/api/v1/merchants/{{merchant_id}}
-- To retrieve a Merchant's Items
+- To retrieve a Merchant's Items<br>
 http://localhost:3000/api/v1/merchants/{{merchant_id}}/items
-- To retrieve a Merchant based on a search(by name)
+- To retrieve a Merchant based on a search(by name)<br>
 http://localhost:3000/api/v1/merchants/find?name={{keyword}}
 
 
 2. Items
-- To retrieve all Items
+- To retrieve all Items<br>
 http://localhost:3000/api/v1/items
-- To retrieve one Item
+- To retrieve one Item<br>
 http://localhost:3000/api/v1/items/{{item_id}}
-- To retrieve an Item's Merchant
+- To retrieve an Item's Merchant<br>
 http://localhost:3000/api/v1/items/{{item_id}}/merchant
-- To retrieve all items based on a search(by name)
+- To retrieve all items based on a search(by name)<br>
 http://localhost:3000/api/v1/items/find_all?name={{keyword}}
 
 - Create and update function also available for Items
